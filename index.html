@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZEST AI — Learn beyond limits</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#101010;--bg2:#171717;--card:#1E1E1E;--ln:#303030;--tx:#F5F1E8;--mu:#999;--ac:#C7A66A;--bad:#e5655f;--ok:#7fc08a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(34px,7vw,56px);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px;font-weight:700}
+h2{font-size:22px;letter-spacing:-.02em;margin:0 0 10px}h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px;color:var(--mu)}small,.mu{color:var(--mu)}small{font-size:12px}
+.w{max-width:1040px;margin:0 auto;padding:0 18px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:18px;margin:10px 0;transition:border-color .2s}
+.card.k:hover{border-color:var(--ac);cursor:pointer}
+button,input,select,textarea{font:inherit;color:var(--tx)}
+button{border:1px solid var(--ln);background:var(--bg2);border-radius:12px;padding:10px 16px;cursor:pointer;transition:all .15s}
+button:hover{border-color:var(--ac)}button:active{transform:scale(.97)}button:disabled{opacity:.4;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.p{background:var(--ac);color:#171717;border-color:var(--ac);font-weight:600}.on{border-color:var(--ac);color:var(--ac)}
+input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--ln);background:var(--bg2);margin:4px 0 10px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.sp{justify-content:space-between}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.nav{position:sticky;top:0;z-index:5;background:#101010ee;backdrop-filter:blur(10px);border-bottom:1px solid var(--ln)}
+.nav .w{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:700;letter-spacing:.14em}.logo i{color:var(--ac);font-style:normal}
+.nav button{border:0;background:none;padding:8px 10px}.nav .p{padding:8px 14px}
+.hero{padding:70px 0 40px}.hero p{font-size:17px;max-width:560px}
+.sec{padding:34px 0}.tag{color:var(--ac);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.pr{font-size:30px;font-weight:700}
+.sh{display:block;min-height:100vh}.sb{display:none}
+.bn{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--bg2);border-top:1px solid var(--ln);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+.bn button{flex:1;border:0;background:none;border-radius:0;padding:10px 2px;font-size:11px;color:var(--mu)}.bn .on{color:var(--ac)}
+.main{padding:18px 16px 96px;max-width:780px;margin:0 auto;animation:fi .25s}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}}
+@media(min-width:860px){.sh{display:grid;grid-template-columns:240px 1fr}.sb{display:flex;flex-direction:column;gap:4px;padding:22px 14px;border-right:1px solid var(--ln);background:var(--bg2);position:sticky;top:0;height:100vh}.sb button{text-align:left;border:0;background:none}.sb .on{background:var(--card)}.bn{display:none}.main{padding-bottom:40px}}
+.bar{height:6px;background:var(--ln);border-radius:6px;overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--ac);transition:width .4s}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.st div{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:14px;text-align:center}.st b{display:block;font-size:22px}
+.bub{max-width:88%;padding:10px 14px;border-radius:16px;margin:8px 0;background:var(--card);border:1px solid var(--ln)}.bub.me{margin-left:auto;background:var(--ac);color:#171717;border-color:var(--ac)}
+.gl{display:inline;border:0;background:none;padding:0;color:var(--ac);text-decoration:underline dotted;cursor:pointer}
+.gn{font-size:13px;color:var(--ac);margin:-4px 0 6px 6px}
+.chip{border-radius:999px;padding:8px 14px}
+.big{font-size:34px;font-weight:700;text-align:center;padding:22px 4px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.opts button{min-height:64px}
+.note{border:1px dashed var(--ac);border-radius:12px;padding:10px 12px;color:var(--ac);font-size:13px;margin:10px 0}
+.ch{display:flex;align-items:flex-end;gap:6px;height:90px}.ch div{flex:1;background:var(--ac);border-radius:4px 4px 0 0;min-height:3px}
+.bd{display:inline-block;border:1px solid var(--ln);border-radius:999px;padding:4px 10px;font-size:12px;margin:3px}.bd.on{border-color:var(--ac);color:var(--ac)}
+.er{color:var(--bad);font-size:13px;margin:-6px 0 8px}
+</style></head><body><div id="root"></div>
+<script>
+const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,8);
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const shuf=a=>[...a].sort(()=>Math.random()-.5),day=(o=0)=>new Date(Date.now()-o*864e5).toISOString().slice(0,10);
+const FL={en:'English',fr:'Français',zh:'中文'};
+const pw=(s,f)=>s.split('/').map(x=>{const a=x.split(';');return{w:a[0],p:a[1],g:a[2],m:a[3]}});
+const B={
+'en.acad':pw("analyse;;examine in detail/assume;;suppose without proof/consequence;;a result of an action/evidence;;facts that prove something/significant;;important and noticeable/approach;;a way of dealing with something/sustainable;;able to continue long-term/perspective;;a point of view"),
+'en.sat':pw("ubiquitous;;found everywhere/ephemeral;;lasting a very short time/pragmatic;;practical/benevolent;;kind and generous/candid;;honest and direct/meticulous;;very careful"),
+'fr.base':pw("bonjour;;hello/merci;;thank you/s’il vous plaît;;please/au revoir;;goodbye/l’eau;;water/la maison;;house/l’ami;;friend/le livre;;book"),
+'fr.dipl':pw("enchanté;;pleased to meet you/je vous en prie;;you are welcome/avec plaisir;;with pleasure/permettez-moi;;allow me/veuillez agréer;;please accept (formal letters)/à votre disposition;;at your service"),
+'zh.base':pw("你好;nǐ hǎo;hello;person + woman with child = good/谢谢;xièxie;thank you;words + shooting an arrow = thanks/再见;zàijiàn;goodbye;again + see/水;shuǐ;water;a stream with splashing drops/朋友;péngyou;friend;two moons side by side/学习;xuéxí;to study;a child under a roof, feathers practising/书;shū;book;a brush stroke through a page/家;jiā;home;a pig under a roof = home")};
+const GR=[["She ___ to school every day.","go","goes","going","gone",1],["If I ___ more time, I would study more.","have","had","has","having",1],["I have lived here ___ 2020.","for","since","during","from",1],["The information ___ very useful.","is","are","were","be",0],["He ___ his homework yesterday.","do","does","did","done",2],["They ___ already left.","has","have","is","was",1]];
+const QU={en:[['Go to the window and open it','I open the window.'],['Pour a glass of water and drink it','I drink water.'],['Pick up a book','I take a book.']],fr:[['Go to the window and open it','J’ouvre la fenêtre.'],['Pour a glass of water and drink it','Je bois de l’eau.'],['Pick up a book','Je prends un livre.']],zh:[['Go to the window and open it','我开窗户。 wǒ kāi chuānghu'],['Pour a glass of water and drink it','我喝水。 wǒ hē shuǐ'],['Pick up a book','我拿书。 wǒ ná shū']]};
+const AR={
+en:[['conv','Conversation','Act it out, then say it aloud','q'],['acad','IELTS & TOEFL academic words','Core academic vocabulary','v','en.acad'],['sat','SAT vocabulary','High-level words','v','en.sat'],['gram','Grammar','Tenses and structures','g'],['essay','Essay writing','AI feedback on essays','x','Needs the AI tutor (Phase 3)']],
+fr:[['conv','Conversation','Act it out, then say it aloud','q'],['vocab','Vocabulary','Everyday essentials','v','fr.base'],['dipl','Diplomatic communication','Polite and formal phrases','v','fr.dipl'],['pron','Pronunciation','Speech feedback','x','Needs speech recognition (Phase 3)']],
+zh:[['begin','Beginner lessons','Act it out, then say it aloud','q'],['vocab','Vocabulary','Words with pinyin','v','zh.base'],['assoc','Association memory','Remember through pictures','v','zh.base',1],['chars','Characters','Match character to pinyin','c','zh.base']]};
+const SC={en:[["Hello [[{n}|your name]]! I’m the demo teacher. Let’s [[practise|train by repeating]]: tell me one thing you did this morning.",["I woke up early.","I went to work.","I studied English."]],["Nice! Notice the past tense: [[woke|past of “wake”]]. What is your [[goal|aim]] for this week?",["Improve speaking","Pass IELTS","Learn 20 words"]],["Great goal. I’ll keep it in your learning profile.",[]]],
+fr:[["Bonjour {n} ! Comment [[allez-vous|how are you (formal)]] ?",["Je vais bien, merci.","Ça va.","Pas très bien."]],["Parfait. Quel est votre [[objectif|goal]] ?",["Voyager","Étudier","Travailler"]],["Très bien ! À bientôt.",[]]],
+zh:[["你好，{n}！你今天 [[怎么样|how are you]]？",["我很好。","还可以。","不太好。"]],["很好！你的 [[目标|goal]] 是什么？",["学习","旅行","工作"]],["太好了！下次见。",[]]]};
+const LV=['Beginner','Elementary','Intermediate','Advanced','Not sure'];
+let S={user:null,session:false,profile:null,plan:'free',pr:{xp:0,lessons:[],words:[],weak:{},days:{},hist:[]},chat:{en:[],fr:[],zh:[]}};
+try{Object.assign(S,JSON.parse(localStorage.getItem('zest2')||'{}'))}catch(e){}
+try{Telegram.WebApp.ready();Telegram.WebApp.expand()}catch(e){}
+const save=()=>{try{localStorage.setItem('zest2',JSON.stringify(S))}catch(e){}};
+let fv={},v=S.session?(S.profile?'app':'onb'):'land',tab='dash',am='up',ob={s:0,d:{int:[]}},ls=null,tm,gn=null,msg='',errs={};
+const lang=()=>S.profile?S.profile.lang:'en';
+const streak=()=>{let n=0,o=S.pr.days[day()]?0:1;while(S.pr.days[day(o+n)])n++;return n};
+const lessonId=(l,a)=>l+':'+a;
+function act(id,xp,words,txt){const p=S.pr;p.xp+=xp;if(!p.lessons.includes(id))p.lessons.push(id);words.forEach(w=>{if(!p.words.includes(w))p.words.push(w)});p.days[day()]=(p.days[day()]||0)+5;p.hist.unshift({d:day(),t:txt});p.hist=p.hist.slice(0,30);save()}
+function go(a,b){v=a;if(b)tab=b;ls=null;clearInterval(tm);msg='';errs={};R();window.scrollTo(0,0)}
+/* views */
+const land=()=>`<div class="nav"><div class="w"><span class="logo">ZEST <i>AI</i></span><div class="row"><button data-a="sc" data-v="f">Features</button><button data-a="sc" data-v="m">Method</button><button data-a="sc" data-v="pr">Pricing</button><button data-a="auth" data-v="in">Log in</button><button class="p" data-a="auth" data-v="up">Start free</button></div></div></div>
+<div class="w"><div class="hero"><div class="tag">Learn beyond limits</div><h1>Learn smarter.<br>Think further.</h1><p>A personal learning environment for English, French and Chinese: teachers that remember you, lessons built around real actions, and progress you can see.</p><div class="row"><button class="p" data-a="auth" data-v="up">Start free</button><button data-a="sc" data-v="m">How it works</button></div></div>
+<div class="g3">${[['English','IELTS, TOEFL, SAT, essays'],['Français','Conversation and diplomacy'],['中文','Characters through association']].map(x=>`<div class="card"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('')}</div>
+<div class="sec" id="f"><div class="tag">Features</div><h2>Everything in one place</h2><div class="g3">${[['Personal AI teacher','Conversation-first lessons (prototype uses scripted demo)'],['Persistent learning memory','Goals, history and progress stay with you'],['Learning studio','Dedicated areas for each language'],['Progress tracking','Streaks, vocabulary and weak areas'],['Gamified practice','Timers, points and achievements'],['Mobile-first','Works inside Telegram and the browser']].map(x=>`<div class="card"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('')}</div></div>
+<div class="sec" id="m"><div class="tag">How it works</div><h2>Three steps</h2><div class="g3">${[['1. Tell us your goals','Short onboarding builds your profile'],['2. Learn by doing','Quests, vocabulary and quizzes'],['3. Keep going','Streaks and recommendations']].map(x=>`<div class="card"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('')}</div></div>
+<div class="sec" id="pr"><div class="tag">Pricing</div><h2>Start free, upgrade later</h2><div class="g3">${[['free','Free','$0','Core lessons and progress'],['pro','Pro','$9 / mo','More practice and AI tutor access'],['premium','Premium','$15 / mo','Unlimited tutor and deep essay review']].map(x=>`<div class="card"><h3>${x[1]}</h3><div class="pr">${x[2]}</div><p>${x[3]}</p><button class="${x[0]==='pro'?'p':''}" data-a="plan" data-v="${x[0]}">${x[0]==='free'?'Start free':'Choose '+x[1]}</button></div>`).join('')}</div><div class="note">Prototype: payments are not connected yet. Choosing a plan only saves your interest on this device.</div></div>
+<div class="card" style="text-align:center"><h2>Ready to begin?</h2><button class="p" data-a="auth" data-v="up">Create your profile</button></div>
+<div class="sec row sp"><span class="logo">ZEST <i>AI</i></span><small>© 2026 ZEST AI · Learn beyond limits.</small></div></div>`;
+const fld=(k,l,t,ph)=>`<label><small>${l}</small><input id="${k}" type="${t}" value="${k==='pw'?'':esc(fv[k]||'')}" placeholder="${ph||''}" autocomplete="${k==='pw'?'off':'on'}"></label>${errs[k]?`<div class="er">${errs[k]}</div>`:''}`;
+const auth=()=>`<div class="w" style="max-width:420px;padding-top:40px"><div class="logo" style="margin-bottom:18px;cursor:pointer" data-a="home">ZEST <i>AI</i></div>
+<div class="row" style="margin-bottom:12px">${[['up','Sign up'],['in','Log in'],['rec','Recover']].map(x=>`<button class="${am===x[0]?'on':''}" data-a="am" data-v="${x[0]}">${x[1]}</button>`).join('')}</div>
+<div class="card">${am==='up'?`${fld('nm','Name','text','Your name')}${fld('em','Email','email','you@example.com')}${fld('pw','Password (8+ characters)','password')}<button class="p" style="width:100%" data-a="signup">Create profile</button>`:am==='in'?`${fld('em','Email','email')}${fld('pw','Password','password')}<button class="p" style="width:100%" data-a="login">Log in</button>`:`${fld('em','Email','email')}<button class="p" style="width:100%" data-a="recover">Send recovery link</button>`}
+${msg?`<div class="note">${msg}</div>`:''}</div><div class="note">Prototype: the profile lives only on this device and passwords are never stored. Real accounts and email recovery arrive with Supabase (Phase 2).</div></div>`;
+const OB=[['What is your main goal?','goal',['IELTS / TOEFL','Study abroad','Career','Travel','Culture & curiosity']],['Which language do you want to learn?','lang',['en','fr','zh']],['How would you describe your level?','level',LV],['How many minutes can you study daily?','time',['10','20','30','60']],['What are you interested in? (pick several)','int',['Technology','Business','Art','Science','Sport','Music']]];
+function onb(){
+  const s=ob.s,q=OB[s],h=OB.slice(0,s).map(x=>{const a=ob.d[x[1]];return `<div class="bub">${x[0]}</div><div class="bub me">${esc(Array.isArray(a)?a.join(', '):x[1]==='lang'?FL[a]:a)}</div>`}).join('');
+  return `<div class="main"><div class="logo" style="margin-bottom:12px">ZEST <i>AI</i></div><div class="bar"><i style="width:${s/5*100}%"></i></div><div class="note">Guided questions. Conversational level detection by a real AI teacher arrives in Phase 3.</div>${h}<div class="bub">${q[0]}</div><div class="row">${q[2].map(o=>`<button class="chip ${q[1]==='int'&&ob.d.int.includes(o)?'on':''}" data-a="ob" data-v="${o}">${q[1]==='lang'?FL[o]:o}${q[1]==='time'?' min':''}</button>`).join('')}${q[1]==='int'?`<button class="p" data-a="obn" ${ob.d.int.length?'':'disabled'}>Continue</button>`:''}</div></div>`}
+const rec=()=>{const l=lang(),a=AR[l].filter(x=>x[3]!=='x'),r=a.find(x=>!S.pr.lessons.includes(lessonId(l,x[0])))||a[0];return r};
+function dash(){
+  const p=S.profile,l=lang(),pl=AR[l].filter(x=>x[3]!=='x'),done=pl.filter(x=>S.pr.lessons.includes(lessonId(l,x[0]))).length,r=rec(),tdy=S.pr.days[day()]||0,pc=Math.round(Math.min(tdy/p.time,1)*100);
+  return `<h2>Welcome back, ${esc(S.user.name)}</h2><p>${FL[l]} · ${esc(p.goal)} · ${esc(p.level)}</p>
+  <div class="st"><div><b>🔥 ${streak()}</b><small>day streak</small></div><div><b>${S.pr.xp}</b><small>XP</small></div><div><b>${done}/${pl.length}</b><small>lessons</small></div></div>
+  <div class="card"><h3>Daily goal</h3><div class="bar"><i style="width:${pc}%"></i></div><small>${tdy} of ${p.time} min (estimated lesson time)</small></div>
+  <div class="card k" data-a="lesson" data-v="${r[0]}"><small>Recommended for you</small><h3>${r[1]}</h3><p>${r[2]}</p><button class="p">Continue learning</button></div>
+  <div class="card"><h3>Recent activity</h3>${S.pr.hist.length?S.pr.hist.slice(0,5).map(h=>`<div class="row sp"><span>${esc(h.t)}</span><small>${h.d}</small></div>`).join(''):`<p>No activity yet. Start your first lesson.</p>`}</div>`}
+function studio(){
+  const l=lang();
+  return `<h2>Learning studio</h2><div class="row">${Object.keys(FL).map(x=>`<button class="chip ${l===x?'on':''}" data-a="lg" data-v="${x}">${FL[x]}</button>`).join('')}</div>`+AR[l].map(a=>{const d=S.pr.lessons.includes(lessonId(l,a[0])),x=a[3]==='x';return `<div class="card ${x?'':'k'}" ${x?'':`data-a="lesson" data-v="${a[0]}"`} style="${x?'opacity:.55':''}"><div class="row sp"><h3>${a[1]}</h3><small>${x?'Phase 3':d?'✓ completed':'Start'}</small></div><p>${x?a[4]:a[2]}</p></div>`}).join('')}
+function lessonV(){
+  const a=ls.a,L=ls;
+  const top=`<div class="row sp"><button data-a="back">←</button><b>${a[1]}</b><small>${L.ph==='quiz'?L.i+1+'/'+L.q.length:''}</small></div>`;
+  if(L.ph==='done')return `${top}<div class="card" style="text-align:center"><div style="font-size:48px">🏆</div><h2>Lesson complete</h2><p>+${L.xp} XP${L.q?` · ${L.ok}/${L.q.length} correct`:''}</p><div class="row" style="justify-content:center"><button class="p" data-a="back">Back to studio</button></div></div>`;
+  if(L.ph==='learn'){const w=L.items[L.i];return `${top}<div class="bar"><i style="width:${L.i/L.items.length*100}%"></i></div><div class="card"><div class="big">${a[5]&&!L.rv?esc(w.m):esc(w.w)}${w.p&&!(a[5]&&!L.rv)?`<br><small>${esc(w.p)}</small>`:''}</div>${L.rv?`<p style="text-align:center">${esc(w.g)}${w.m&&!a[5]?`<br><small>${esc(w.m)}</small>`:''}${a[5]?`<br><b>${esc(w.w)}</b>`:''}</p>`:''}</div>${L.rv?`<button class="p" style="width:100%" data-a="nx">Next</button>`:`<button style="width:100%" data-a="rv">🙏 Sorry, I don’t understand this word</button>`}`}
+  if(L.ph==='quest'){const q=QU[L.lg][L.i];return `${top}<div class="card"><small>Step ${L.i+1}/3</small><div class="big" style="font-size:22px">🎯 ${q[0]}</div>${L.rv?`<p style="text-align:center">Now say aloud:</p><div class="big" style="color:var(--ac)">${esc(q[1])}</div>`:''}</div><button class="p" style="width:100%" data-a="${L.rv?'qs':'qd'}">${L.rv?'I said it':'Done'}</button>`}
+  const q=L.q[L.i];return `${top}<div class="bar"><i id="tb" style="width:${L.tl/12*100}%"></i></div><div class="card"><div class="big" style="font-size:${q.p.length>20?20:30}px">${esc(q.p)}</div></div><div class="opts">${q.o.map((o,i)=>`<button data-a="ans" data-v="${i}" style="${L.an!==null&&i===q.c?'border-color:var(--ok);color:var(--ok)':L.an===i?'border-color:var(--bad);color:var(--bad)':''}">${esc(o)}</button>`).join('')}</div><small>Score ${L.sc}</small>`}
+function startL(id){
+  const l=lang(),a=AR[l].find(x=>x[0]===id);ls={a,lg:l,i:0,rv:0,sc:0,ok:0,an:null,tl:12};
+  if(a[3]==='q'){ls.ph='quest'}
+  else if(a[3]==='g'){ls.q=shuf(GR).slice(0,5).map(g=>{const o=shuf(g.slice(1,5)),c=o.indexOf(g[g[5]+1]);return{p:g[0],o,c}});ls.ph='quiz';tq()}
+  else{ls.W=B[a[4]];ls.items=shuf(ls.W).slice(0,6);ls.ph=a[3]==='c'?'quiz':'learn';if(ls.ph==='quiz'){ls.q=mk(ls.items,ls.W,1);tq()}}
+  v='les';R()}
+const mk=(it,W,c)=>it.map(w=>{const o=shuf([w,...shuf(W.filter(x=>x!==w)).slice(0,3)]);return{p:c?w.w:w.w+(w.p?' · '+w.p:''),o:o.map(x=>c?x.p:x.g),c:o.indexOf(w)}});
+function tq(){clearInterval(tm);ls.tl=12;ls.an=null;tm=setInterval(()=>{ls.tl-=.1;const b=$('#tb');if(b)b.style.width=ls.tl/12*100+'%';if(ls.tl<=0)ans(-1)},100)}
+function ans(j){if(!ls||ls.an!==null)return;clearInterval(tm);ls.an=j;const q=ls.q[ls.i];
+  if(j===q.c){ls.ok++;ls.sc+=10+Math.round(ls.tl)}else{const k=lang()+':'+ls.a[0];S.pr.weak[k]=(S.pr.weak[k]||0)+1;save()}
+  R();setTimeout(()=>{if(!ls)return;ls.i++;if(ls.i>=ls.q.length)fin();else{tq();R()}},1000)}
+function fin(){const xp=ls.q?ls.ok*5+5:20;ls.xp=xp;ls.ph='done';act(lessonId(ls.lg,ls.a[0]),xp,ls.items?ls.items.map(w=>w.w):[],'Completed: '+ls.a[1]);R()}
+function teach(){
+  const l=lang(),ch=S.chat[l],p=S.profile;
+  if(!ch.length){ch.push({r:'t',t:SC[l][0][0].replace('{n}',S.user.name)});save()}
+  const st=ch.filter(m=>m.r==='t').length;
+  const last=SC[l][Math.min(st-1,2)],o=st<3?last[1]:[];
+  return `<div class="row sp"><h2>AI teacher</h2><div class="row">${Object.keys(FL).map(x=>`<button class="chip ${l===x?'on':''}" data-a="lg" data-v="${x}">${FL[x]}</button>`).join('')}</div></div>
+  <div class="note">Demo teacher: scripted replies, not real AI. Real conversation arrives in Phase 3.</div>
+  <div class="card"><small>Memory (saved on this device)</small><div><span class="bd on">${esc(p.goal)}</span><span class="bd">${esc(p.level)}</span><span class="bd">${S.pr.words.length} words</span><span class="bd">${S.pr.lessons.length} lessons</span>${p.int.map(i=>`<span class="bd">${esc(i)}</span>`).join('')}</div></div>
+  ${ch.map((m,i)=>`<div class="bub ${m.r==='u'?'me':''}">${m.r==='t'?m.t.replace(/\[\[(.+?)\|(.+?)\]\]/g,(x,w,g)=>`<button class="gl" data-a="gl" data-v="${i}|${esc(w)}|${esc(g)}">${w}</button>`):esc(m.t)}</div>${gn&&gn.i===i?`<div class="gn">${esc(gn.w)} — ${esc(gn.g)}</div>`:''}`).join('')}
+  <small>Tap an underlined word to see its meaning without leaving the conversation.</small>
+  <div class="row" style="margin-top:8px">${o.map(x=>`<button class="chip" data-a="say" data-v="${esc(x)}">${esc(x)}</button>`).join('')}${st>=3?`<button class="chip" data-a="rst">Restart conversation</button>`:''}</div>
+  <input disabled placeholder="Free typing unlocks with the real AI tutor (Phase 3)" style="margin-top:10px">`}
+function prog(){
+  const p=S.pr,wk=Object.entries(p.weak).sort((a,b)=>b[1]-a[1]).slice(0,3),days=[6,5,4,3,2,1,0].map(o=>p.days[day(o)]||0),mx=Math.max(...days,1);
+  const ach=[['First lesson',p.lessons.length>=1],['3-day streak',streak()>=3],['25 words',p.words.length>=25],['100 XP',p.xp>=100]];
+  return `<h2>Progress</h2><div class="st"><div><b>${p.words.length}</b><small>words</small></div><div><b>${p.lessons.length}</b><small>lessons</small></div><div><b>${p.xp}</b><small>XP</small></div></div>
+  <div class="card"><h3>Daily activity (min, 7 days)</h3><div class="ch">${days.map(d=>`<div style="height:${d/mx*100}%"></div>`).join('')}</div></div>
+  <div class="card"><h3>Achievements</h3>${ach.map(a=>`<span class="bd ${a[1]?'on':''}">${a[1]?'★':'☆'} ${a[0]}</span>`).join('')}</div>
+  <div class="card"><h3>Weak areas</h3>${wk.length?wk.map(w=>`<div class="row sp"><span>${esc(w[0].split(':')[0].toUpperCase())} · ${esc((AR[w[0].split(':')[0]].find(a=>a[0]===w[0].split(':')[1])||[0,w[0]])[1])}</span><small>${w[1]} mistakes</small></div>`).join(''):'<p>No weak areas yet. Finish a quiz to see them.</p>'}</div>
+  <div class="card"><h3>Learning history</h3>${p.hist.length?p.hist.map(h=>`<div class="row sp"><span>${esc(h.t)}</span><small>${h.d}</small></div>`).join(''):'<p>Nothing here yet.</p>'}</div>`}
+function prof(){
+  const p=S.profile;
+  return `<h2>Profile</h2><div class="card"><label><small>Name</small><input id="pn" value="${esc(S.user.name)}"></label><label><small>Email</small><input value="${esc(S.user.email)}" disabled></label><button data-a="pns">Save name</button></div>
+  <div class="card"><small>Language</small><div class="row">${Object.keys(FL).map(x=>`<button class="chip ${p.lang===x?'on':''}" data-a="lg" data-v="${x}">${FL[x]}</button>`).join('')}</div>
+  <small>Daily minutes</small><div class="row">${[10,20,30,60].map(x=>`<button class="chip ${p.time===x?'on':''}" data-a="tm" data-v="${x}">${x}</button>`).join('')}</div>
+  <small>Goal: ${esc(p.goal)} · Level: ${esc(p.level)}</small><div><button data-a="redo">Redo onboarding</button></div></div>
+  <div class="card"><h3>Subscription</h3><p>Current plan: <b>${S.plan==='free'?'Free':S.plan}</b>. Payments are not connected in this prototype.</p></div>
+  <div class="card"><h3>Settings</h3><div class="row"><button data-a="out">Log out</button><button data-a="wipe" style="color:var(--bad)">${msg==='wipe'?'Tap again to delete all data':'Delete all data'}</button></div></div>`}
+function app(){
+  const T=[['dash','🏠','Dashboard'],['teach','💬','AI Teacher'],['studio','📚','Studio'],['prog','📈','Progress'],['prof','👤','Profile']];
+  const body=v==='les'?lessonV():{dash,teach,studio,prog,prof}[tab]();
+  return `<div class="sh"><div class="sb"><div class="logo" style="margin:0 8px 14px">ZEST <i>AI</i></div>${T.map(t=>`<button class="${tab===t[0]&&v==='app'?'on':''}" data-a="tab" data-v="${t[0]}">${t[1]} ${t[2]}</button>`).join('')}</div><div class="main">${body}</div><div class="bn">${T.map(t=>`<button class="${tab===t[0]&&v==='app'?'on':''}" data-a="tab" data-v="${t[0]}">${t[1]}<br>${t[2]}</button>`).join('')}</div></div>`}
+function R(){$('#root').innerHTML=v==='land'?land():v==='auth'?auth():v==='onb'?onb():app()}
+const val=(k)=>($('#'+k)||{value:''}).value.trim();
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,x=b.dataset.v;
+  if(a==='sc'){const el=$('#'+x);if(el)el.scrollIntoView({behavior:'smooth'});return}
+  if(a==='home')go('land');
+  else if(a==='auth'){am=x;go('auth')}
+  else if(a==='plan'){S.plan=x;save();am='up';go('auth')}
+  else if(a==='am'){am=x;errs={};msg='';R()}
+  else if(a==='signup'){errs={};const n=val('nm'),m=val('em'),p=val('pw');fv={nm:n,em:m};
+    if(n.length<2)errs.nm='Enter your name';if(!/^\S+@\S+\.\S+$/.test(m))errs.em='Enter a valid email';if(p.length<8)errs.pw='At least 8 characters';
+    if(Object.keys(errs).length){R();return}S.user={name:n.slice(0,40),email:m};S.session=true;save();ob={s:0,d:{int:[]}};go('onb')}
+  else if(a==='login'){errs={};const m=val('em');fv={em:m};if(!/^\S+@\S+\.\S+$/.test(m))errs.em='Enter a valid email';
+    if(!errs.em&&(!S.user||S.user.email!==m)){msg='No profile with this email on this device. Create one first.';R();return}
+    if(errs.em){R();return}S.session=true;save();go(S.profile?'app':'onb','dash')}
+  else if(a==='recover'){msg='Prototype: nothing was sent. Email recovery needs Supabase Auth (Phase 2).';R();return}
+  else if(a==='ob'){const k=OB[ob.s][1];if(k==='int'){const i=ob.d.int.indexOf(x);i<0?ob.d.int.push(x):ob.d.int.splice(i,1)}else{ob.d[k]=k==='time'?+x:x;ob.s++}
+    if(ob.s>=4&&!ob.d.int&&0){}R();if(ob.s>=5)return}
+  else if(a==='obn'){S.profile={goal:ob.d.goal,lang:ob.d.lang,level:ob.d.level,time:ob.d.time,int:ob.d.int};save();go('app','dash')}
+  else if(a==='tab'){tab=x;v='app';ls=null;clearInterval(tm)}
+  else if(a==='lg'){S.profile.lang=x;save();gn=null}
+  else if(a==='tm'){S.profile.time=+x;save()}
+  else if(a==='lesson'){startL(x);return}
+  else if(a==='back'){clearInterval(tm);ls=null;v='app';tab='studio'}
+  else if(a==='rv')ls.rv=1;
+  else if(a==='nx'){ls.i++;ls.rv=0;if(ls.i>=ls.items.length){ls.q=mk(ls.items,ls.W,0);ls.i=0;ls.ph='quiz';tq()}}
+  else if(a==='qd')ls.rv=1;
+  else if(a==='qs'){ls.i++;ls.rv=0;if(ls.i>=3)fin()}
+  else if(a==='ans'){ans(+x);return}
+  else if(a==='gl'){const [i,w,g]=x.split('|');gn=gn&&gn.i==i&&gn.w===w?null:{i:+i,w,g}}
+  else if(a==='say'){const l=lang(),ch=S.chat[l],st=ch.filter(m=>m.r==='t').length;ch.push({r:'u',t:x});const nx=SC[l][st];if(nx)ch.push({r:'t',t:nx[0].replace('{n}',S.user.name)});save()}
+  else if(a==='rst'){S.chat[lang()]=[];save()}
+  else if(a==='pns'){const n=val('pn');if(n.length>=2){S.user.name=n.slice(0,40);save()}}
+  else if(a==='redo'){ob={s:0,d:{int:[]}};v='onb'}
+  else if(a==='out'){S.session=false;save();go('land')}
+  else if(a==='wipe'){if(msg==='wipe'){try{localStorage.removeItem('zest2')}catch(e){}location.reload();return}msg='wipe'}
+  R()});
+R();
+</script></body></html>
